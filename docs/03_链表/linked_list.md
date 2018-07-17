@@ -13,6 +13,7 @@
 
 # 单链表
 和线性结构不同，链式结构内存不连续的，而是一个个串起来的，这个时候就需要每个链接表的节点保存一个指向下一个节点的指针。
+这里可不要混淆了列表和链表（它们的中文发音类似，但是列表 list 底层其实还是线性结构，链表才是真的通过指针关联的链式结构）。
 看到指针你也不用怕，这里我们用的 python，你只需要一个简单赋值操作就能实现，不用担心 c 语言里复杂的指针。
 
 先来定义一个链接表的节点，刚才说到有一个指针保存下一个节点的位置，我们叫它 next， 当然还需要一个 value 属性保存值
@@ -85,3 +86,7 @@ cdll.tailnode()                        | O(1)           |
 # 相关阅读
 
 [那些年，我们一起跪过的算法题- Lru cache[视频]](https://zhuanlan.zhihu.com/p/35175401)
+
+# 勘误：
+
+视频中 LinkedList.remove 方法讲解有遗漏， linked_list.py 文件已经修正，请读者注意。具体请参考 [fix linked_list & add gitigonre](https://github.com/PegasusWang/python_data_structures_and_algorithms/pull/3)。视频最后增加了一段勘误说明。
