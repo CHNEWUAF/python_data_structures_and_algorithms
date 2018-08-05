@@ -41,7 +41,7 @@ class CircularDoubleLinkedList(object):
         self.length += 1
 
     def appendleft(self, value):
-        if self.maxsize is not None and len(self) > self.maxsize:
+        if self.maxsize is not None and len(self) >= self.maxsize:
             raise Exception('LinkedList is Full')
         node = Node(value=value)
         if self.root.next is self.root:   # empty
