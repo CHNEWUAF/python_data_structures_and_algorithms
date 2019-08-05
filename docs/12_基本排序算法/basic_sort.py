@@ -50,7 +50,7 @@ def insertion_sort(seq):
         # 找到这个值的合适位置，使得前边的数组有序 [0,i] 有序
         pos = i
         while pos > 0 and value < seq[pos-1]:
-            seq[pos] = seq[pos-1]  # 如果前边的元素比它大，就让它一直前移
+            seq[pos] = seq[pos-1]  # 如果前边的元素比它大，就让它一直后移
             pos -= 1
         seq[pos] = value    # 找到了合适的位置赋值就好
         print(seq)

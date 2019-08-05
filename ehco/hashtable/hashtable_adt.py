@@ -1,30 +1,8 @@
-class Array(object):
-
-    def __init__(self, size=32, init=None):
-        self._size = size
-        self._items = [init] * size
-
-    def __getitem__(self, index):
-        return self._items[index]
-
-    def __setitem__(self, index, value):
-        self._items[index] = value
-
-    def __len__(self):
-        return self._size
-
-    def clear(self, value=None):
-        for i in range(self._items):
-            self._items[i] = value
-
-    def __iter__(self):
-        for item in self._items:
-            yield item
+from ehco.array_list.array_and_list import Array
 
 
-class Slot(object):
+class Slot:
     """定义一个 hash 表 数组的槽
-    注意，一个槽有三种状态，看你能否想明白。相比链接法解决冲突，二次探查法删除一个 key 的操作稍微复杂。
 
     1.从未使用 HashMap.UNUSED。此槽没有被使用和冲突过，查找时只要找到 UNUSED 就不用再继续探查了
     2.使用过但是 remove 了，此时是 HashMap.EMPTY，该探查点后边的元素扔可能是有key
@@ -35,7 +13,7 @@ class Slot(object):
         self.key, self.value = key, value
 
 
-class HashTable(object):
+class HashTable:
 
     # 没有被使用过的
     UNUSED = None
@@ -48,7 +26,6 @@ class HashTable(object):
 
     @property
     def _load_factor(self):
-        # load factor 超过0.8的时候重新分配
         return self.length / float(len(self._table))
 
     def __len__(self):
@@ -134,18 +111,18 @@ class HashTable(object):
 def test_hash_table():
     h = HashTable()
 
-    h.add('a', 0)
-    h.add('b', 1)
-    h.add('c', 2)
+    h.add("a", 0)
+    h.add("b", 1)
+    h.add("c", 2)
 
     assert len(h) == 3
-    assert h.get('a') == 0
-    assert h.get('b') == 1
-    assert h.get('hehe') is None
+    assert h.get("a") == 0
+    assert h.get("b") == 1
+    assert h.get("hehe") is None
 
-    h.remove('a')
-    assert h.get('a') is None
-    assert sorted(list(h)) == ['b', 'c']
+    h.remove("a")
+    assert h.get("a") is None
+    assert sorted(list(h)) == ["b", "c"]
 
     n = 50
     for i in range(n):
