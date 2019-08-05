@@ -45,13 +45,14 @@ class CircularDoubleLinkedList(object):
             raise Exception('LinkedList is Full')
         node = Node(value=value)
         if self.root.next is self.root:   # empty
-            node.next = self.root
             node.prev = self.root
+            node.next = self.root
             self.root.next = node
             self.root.prev = node
         else:
-            node.prev = self.root
             headnode = self.root.next
+
+            node.prev = self.root
             node.next = headnode
             headnode.prev = node
             self.root.next = node
